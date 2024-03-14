@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        section {
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('books') }}">Books</a></li>
+            <li><a href="{{ url_for('members')}}">Members</a></li>
+            <li><a href="#transactions">Transactions</a></li>
+        </ul>
+    </nav>
+    <section id="books">
+        <h2>Book Information</h2>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>ISBN</th>
+            </tr>
+            <!-- Add book information rows here -->
+       
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.isbn }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<!-- Similar loops for members and transactions -->
+
+    </section>
+    <section id="members">
+        <h2>Member Information</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Membership ID</th>
+                <th>Address</th>
+            </tr>
+            <!-- Add member information rows here -->
+
+            {% for member in members %}
+            <tr>
+                <td>{{ member.name }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.membership_id }}</td>
+                <td>{{ member.address }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+    <section id="transactions">
+        <h2>Transaction Information</h2>
+        <table>
+            <tr>
+                <th>Book Title</th>
+                <th>Member Name</th>
+                <th>Date Borrowed</th>
+                <th>Date Returned</th>
+            </tr>
+            <!-- Add transaction information rows here -->
+
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.book_title }}</td>
+                <td>{{ transaction.member_name }}</td>
+                <td>{{ transaction.date_borrowed }}</td>
+                <td>{{ transaction.date_returned }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</body>
+</html>
